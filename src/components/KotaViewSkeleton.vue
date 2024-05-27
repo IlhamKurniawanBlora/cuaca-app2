@@ -1,5 +1,5 @@
 <template>
-<div class="flex flex-col flex-1">
+<div class="relative flex flex-col flex-1 dark:bg-slate-900 bg-slate-200">
     <!-- Overview -->
     <div class="flex flex-col py-12 items-center">
       <PlaceHolder class="max-w-[300px] w-full mb-2" />

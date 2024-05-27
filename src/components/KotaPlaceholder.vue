@@ -1,6 +1,6 @@
 <template>
     <!-- skeleton load kota -->
-    <div class="flex py-6 px-3 bg-cuaca-sekunder rounded-md shadow-md">
+    <div class="flex py-6 px-3 bg-slate-300 dark:bg-slate-900 rounded-md shadow-md">
         <div class="flex flex-col flex-1 gap-1">
             <PlaceHolder class="max-w-[50%]"/>
             <PlaceHolder class="max-w-[40%]"/>

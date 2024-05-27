@@ -2,13 +2,27 @@
     <Teleport to="body">
         <Transition name="modal-outer">
             <div v-show="modalActive" 
-             class="fixed w-full bg-black bg-opacity-30 h-screen top-0 left-0 flex justify-center px-8">
+             class="fixed overflow-y-auto overflow-x-hidden top-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
                 <Transition name="modal-inner">
-                    <div v-if="modalActive" class="p-4 bg-white text-black self-start mt-32 max-w-screen-md">
+                    <div v-if="modalActive" class="mx-auto p-4 dark:bg-slate-800 shadow-md shadow-slate-200 bg-white text-black self-start mt-5 max-w-screen-md rounded-lg px-4">
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 px-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Petunjuk :
+                            </h3>
+                            <button @click="$emit('close-modal')" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        
                         <slot />
-                        <button @click="$emit('close-modal')" class="text-white bg-cuaca-primer py-2 px-6">
-                            Close
-                        </button>
+                       
+                        <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button @click="$emit('close-modal')" data-modal-hide="default-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Baik, Mengerti</button>
+                            
+                        </div>
                     </div>
                 </Transition>
             </div>

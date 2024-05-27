@@ -1,10 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  darkMode: 'class',
+  content: [
+    "./index.html", 
+    "./src/**/*.{vue,js,ts,jsx,tsx}", 
+    "./node_modules/flowbite/**/*.js"
+  ],
+    
   theme: {
     extend: {
       colors:{
-        "cuaca-primer": "#00668A",
+        "text-primer": "",
+        "cuaca-primer": "#0000",
         "cuaca-sekunder": "#004E71",
       },
     },
@@ -12,14 +19,28 @@ module.exports = {
       padding: "2rem",
       center: true,
     },
-    fontFamily:{
-      Roboto : ["Roboto, sans-serif"]
+
+    fontFamily: {
+      'body': [
+        'Inter', 
+        'ui-sans-serif', 
+        'system-ui',
+        // other fallback fonts
+      ],
+      'sans': [
+        'Inter', 
+        'ui-sans-serif', 
+        'system-ui',
+        // other fallback fonts
+      ],
     },
     screens:{
       sm: "640px",
       md: "760px",
     }
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 
