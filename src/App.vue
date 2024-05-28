@@ -1,13 +1,12 @@
 <template>
   <SiteNavigation>
-
-    <div class="flex flex-col min-h-screen font-Roboto bg-slate-200 dark:bg-slate-800">
+    <div class="flex flex-col min-h-screen font-Roboto bg-slate-200 dark:bg-slate-800 mt-16 ">
         <RouterView v-slot="{ Component }">
           <Transition name="page" mode="out-in">
             <component :is="Component"/>
           </Transition>
+          <FooterApp />
         </RouterView>
-        <FooterApp />
     </div>
   </SiteNavigation>
 </template>

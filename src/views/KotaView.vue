@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <main >
         <Suspense>
             <AsyncKotaView />
             <template #fallback>
@@ -8,7 +8,7 @@
                 </div>
             </template>
         </Suspense>
-    </div>
+    </main>
 </template>
 
 <script setup>

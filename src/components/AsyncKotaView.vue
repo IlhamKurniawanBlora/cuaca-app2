@@ -1,10 +1,14 @@
 <template>   
-    <div class="flex flex-col flex-1 items-center">
+    <div class="flex flex-col flex-1 items-center md:mt-12 mt-16">
         <!-- Banner -->
-        <div v-if="route.query.preview" class="dark:text-white text-slate-600 bg-slate-300 dark:bg-cuaca-sekunder p-4 w-full text-center">
-            <p>
-                untuk menambahkan kota ke halaman depan klik "+" di pojok atas.
-            </p>
+        <div v-if="route.query.preview" class="w-full dark:text-white text-slate-600 bg-slate-300 dark:bg-cuaca-sekunder p-4 text-center">
+            <transition name="banner">
+                <div class="relative">
+                    <p>
+                        untuk menambahkan kota ke halaman depan klik "+" di pojok atas.
+                    </p>
+                </div>
+            </transition>
         </div>
         <!-- tampilan cuaca  -->
         <div class="flex flex-col items-center dark:text-white text-slate-600 py-20">
@@ -109,13 +113,16 @@
             </span>
             </button>
     </div>
-    <DeleteAlert />
+    <DeleteAlert ref="DeleteAlertToast" />
 </template>
 
 <script setup>
+import {ref} from "vue";
+import DeleteAlert from "../components/DeleteAlert.vue";
 import axios from 'axios';
 import { useRoute, useRouter } from "vue-router";
-import DeleteAlert from "./DeleteAlert.vue";
+
+const DeleteAlertToast = ref(null);
 
 const route = useRoute();
 const getDataCuaca = async () => {
@@ -146,24 +153,22 @@ const getDataCuaca = async () => {
     }
 };
 const DataCuaca = await getDataCuaca();
-console.log(DataCuaca);
-
+// console.log(DataCuaca);
 // hapus kota tersimpan
 const router = useRouter();
 const hapusKota = () => {
+    DeleteAlertToast.value.showDeleteAlert('Data Berhasil Dihapus!');
     const kota = JSON.parse(localStorage.getItem("kotaTersimpan"));
     const updatekota = kota.filter(
         (kota) => kota.id !== route.query.id);
     localStorage.setItem("kotaTersimpan", 
     JSON.stringify(updatekota));
-        // Tampilkan toast alert
-    VisibleAdd.value = true;
     setTimeout(() => {
-        VisibleAdd.value = false;
-    }, 3000);
-    router.push({
-        name: 'home',
-    });
+        router.push({
+            name: 'home',
+        });
+    }, 2000);
+    
 };
 </script>
 <style scoped>
@@ -180,4 +185,14 @@ const hapusKota = () => {
 .scrollbar-thumb-rounded::-webkit-scrollbar-track {
     background-color: lightgray;
 }
+/* alert transition */
+.banner-enter-active, .banner-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.banner-enter-from, .banner-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
 </style>
