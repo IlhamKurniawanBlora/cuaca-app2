@@ -10,7 +10,7 @@
     <div class="p-3">
         <div class="flex items-center justify-between mb-2">
             <a href="#">
-                <img class="w-10 h-10 rounded-full" src="img/profile-blck.png" alt="Jese Leos">
+                <img class="w-10 h-10 rounded-full" src="/img/ilham1.jpg" alt="Jese Leos">
             </a>
             <div>
                 <a
