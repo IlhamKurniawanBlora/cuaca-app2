@@ -128,7 +128,7 @@ const route = useRoute();
 const getDataCuaca = async () => {
     try {
         const DataCuaca = await axios.get(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=416f0ed0bb28d3110beedecf5fa9cf85&units=imperial`
+            `https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=416f0ed0bb28d3110beedecf5fa9cf85&units=imperial`
         );
 
         // menghitung hari dan waktu
